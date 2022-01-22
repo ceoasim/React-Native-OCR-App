@@ -5,6 +5,7 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
+import Tts from 'react-native-tts';
 
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
@@ -24,10 +25,6 @@ const Home = () => {
 
 
   const textList = selectors.getTextList();
-
-  console.log("yoyo", textList);
-
-
 
 
   const renderListItem = ({ item }) => {
@@ -50,8 +47,11 @@ const Home = () => {
               {item.text}</Text>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <TouchableOpacity onPress={() => navigation.navigate('Home', { editEmployeeData: item })}>
-              <Image resizeMode={'contain'} style={{ width: 20, height: 20, tintColor: '#00AEF0' }} source={images.edit} />
+            <TouchableOpacity onPress={() => Tts.speak(item.text)}>
+              <Image resizeMode={'contain'} style={{ width: 20, height: 20 }} source={images.tracking} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Tts.stop(item.text)}>
+              <Image resizeMode={'contain'} style={{ width: 20, height: 20, marginLeft:20 }} source={images.close} />
             </TouchableOpacity>
           </View>
         </View>
@@ -78,7 +78,7 @@ const Home = () => {
               fontSize: 21,
               color: colors.lightBlack,
             }}>
-            OCR
+            Text To Speech
           </Text>
           <View />
         </View>
