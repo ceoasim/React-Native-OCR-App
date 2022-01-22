@@ -74,6 +74,7 @@ import Login from './src/screens/Login'
 import Profile from './src/screens/Profile'
 import OtpInput from './src/screens/OtpInput'
 import Home from './src/screens/Home'
+import ImageToTextStack from './src/screens/ImageToText'
 import PasswordLogin from './src/screens/PasswordLogin'
 import EmailSignup from './src/screens/EmailSignup'
 import images from './src/constants/images'
@@ -128,7 +129,7 @@ export default function App(navigation) {
         .doc(auth()?.currentUser?.uid)
         .collection('EmployeeData')
         .get();
-      store.dispatch(Actions.getEmployeeList());
+      store.dispatch(Actions.login());
 
     }
 
@@ -152,12 +153,12 @@ export default function App(navigation) {
         </Stack.Navigator>
       );
     };
-    const AddEmployeeStack = () => {
+    const ImageStack = () => {
       return (
         <Stack.Navigator headerMode={false} initialRouteName="Home">
           <Stack.Screen
-            name="Home"
-            component={Home}
+            name="ImageStack"
+            component={ImageToTextStack}
             options={{
               animationEnabled: false
             }}
@@ -179,19 +180,19 @@ export default function App(navigation) {
       );
     };
     
-    const SearchStack = () => {
-      return (
-        <Stack.Navigator headerMode={false} initialRouteName="Search">
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{
-              animationEnabled: false
-            }}
-          />
-        </Stack.Navigator>
-      );
-    };
+    // const SearchStack = () => {
+    //   return (
+    //     <Stack.Navigator headerMode={false} initialRouteName="Search">
+    //       <Stack.Screen
+    //         name="Home"
+    //         component={Home}
+    //         options={{
+    //           animationEnabled: false
+    //         }}
+    //       />
+    //     </Stack.Navigator>
+    //   );
+    // };
 
     const ProfileStack = () => {
       return (
@@ -221,14 +222,12 @@ export default function App(navigation) {
                     source={images.home_icon}
                   />
                 );
-              } else if (route.name === 'AddEmployeeStack') {
+              } else if (route.name === 'ImageStack') {
                 return (
-                  <View style={{ borderWidth: 1, borderColor: color, borderRadius: size, width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
-
-                    <Text style={{ color: color, fontSize: 15, textAlign: 'center' }}>
-                      +
-                  </Text>
-                  </View>
+                  <Image
+                    style={{ tintColor: color, height: size, width: size, resizeMode:'contain' }}
+                    source={images.camera_new}
+                  />
 
                 );
               } else if (route.name === 'AttendanceStack') {
@@ -240,15 +239,15 @@ export default function App(navigation) {
                   />
                 );
               }
-               else if (route.name === 'SearchStack') {
-                return (
-                  <Image
-                    resizeMode='contain'
-                    style={{ tintColor: color, height: size, width: size }}
-                    source={images.search}
-                  />
-                );
-              }
+              //  else if (route.name === 'SearchStack') {
+              //   return (
+              //     <Image
+              //       resizeMode='contain'
+              //       style={{ tintColor: color, height: size, width: size }}
+              //       source={images.search}
+              //     />
+              //   );
+              // }
               else if (route.name === 'ProfileStack') {
                 return (
                   <Image
@@ -267,9 +266,9 @@ export default function App(navigation) {
             showLabel: false,
           }}>
           <Tab.Screen name="HomeStack" component={HomeStack} />
-          <Tab.Screen name="AddEmployeeStack" component={AddEmployeeStack} />
+          <Tab.Screen name="ImageStack" component={ImageStack} />
           <Tab.Screen name="AttendanceStack" component={AttendanceStack} />
-          <Tab.Screen name="SearchStack" component={SearchStack} />
+          {/* <Tab.Screen name="SearchStack" component={SearchStack} /> */}
           <Tab.Screen name="ProfileStack" component={ProfileStack} />
         </Tab.Navigator>
       );

@@ -1,78 +1,23 @@
 import {
-  Add_EMPLOYEE,
-  Add_EMPLOYEE_SUCCESS,
-  GET_EMPLOYEES_LIST,
-  GET_EMPLOYEES_LIST_SUCCESS,
-  UPDATE_EMPLOYEE,
+  ADD_TEXT, LOGIN,
 } from './types';
 
 
-export const addEmployee = (
-  employeeName,
-  employeeAddress,
-  city,
-  state,
-  position,
-  salary,
-  phone,
-  emailId
+export const addText = (
+  text
 ) => (
   {
-    type: Add_EMPLOYEE,
+    type: ADD_TEXT,
     payload: {
-      employeeName,
-      employeeAddress,
-      city,
-      state,
-      position,
-      salary,
-      phone,
-      emailId
+      text
     }
   }
 );
 
-export const updateEmployee = (
-  id,
-  employeeName,
-  employeeAddress,
-  city,
-  state,
-  position,
-  salary,
-  phone,
-  emailId
+export const login = (
+  
 ) => (
   {
-    type: UPDATE_EMPLOYEE,
-    payload: {
-      id,
-      employeeName,
-      employeeAddress,
-      city,
-      state,
-      position,
-      salary,
-      phone,
-      emailId,
-    }
-  }
-);
-
-export const addEmployeeSuccess = () => (
-  {
-    type: Add_EMPLOYEE_SUCCESS,
-  }
-);
-export const getEmployeeList = phoneNumber => (
-  {
-    type: GET_EMPLOYEES_LIST,
-    payload: phoneNumber
-  }
-);
-export const getEmployeeListSuccess = data => (
-  {
-    type: GET_EMPLOYEES_LIST_SUCCESS,
-    payload: data
+    type: LOGIN,
   }
 );
