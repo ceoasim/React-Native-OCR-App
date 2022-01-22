@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "367526671711",
+    "project_id": "smart-hr-c9870",
+    "storage_bucket": "smart-hr-c9870.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367526671711:android:cf8f16abc665f9bbdb32ea",
+        "android_client_info": {
+          "package_name": "com.fyp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367526671711-h0388ut4ssgkituucio83eu2cfaditj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGrOtra5KUP1bnWm0Kfue9C1NsJ6Vaqeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367526671711-h0388ut4ssgkituucio83eu2cfaditj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,4 @@
+export const ADD_PHONE_NUMBER = "ADD_PHONE_NUMBER";
+export const ADD_EMAIL = "ADD_EMAIL";
+export const CHECK_LOGIN = "CHECK_LOGIN";
+export const ADD_CATEGORIES = "ADD_CATEGORIES";
