@@ -78,6 +78,7 @@ import ImageToTextStack from './src/screens/ImageToText'
 import PasswordLogin from './src/screens/PasswordLogin'
 import EmailSignup from './src/screens/EmailSignup'
 import images from './src/constants/images'
+import DigiSign from './src/screens/DigiSign';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -166,12 +167,12 @@ export default function App(navigation) {
         </Stack.Navigator>
       );
     };
-    const AttendanceStack = () => {
+    const SignatureStack = () => {
       return (
         <Stack.Navigator headerMode={false} initialRouteName="Attendance">
           <Stack.Screen
-            name="Home"
-            component={Home}
+            name="DigiSign"
+            component={DigiSign}
             options={{
               animationEnabled: false
             }}
@@ -230,7 +231,7 @@ export default function App(navigation) {
                   />
 
                 );
-              } else if (route.name === 'AttendanceStack') {
+              } else if (route.name === 'SignatureStack') {
                 return (
                   <Image
                     resizeMode='contain'
@@ -267,7 +268,7 @@ export default function App(navigation) {
           }}>
           <Tab.Screen name="HomeStack" component={HomeStack} />
           <Tab.Screen name="ImageStack" component={ImageStack} />
-          <Tab.Screen name="AttendanceStack" component={AttendanceStack} />
+          <Tab.Screen name="SignatureStack" component={SignatureStack} />
           {/* <Tab.Screen name="SearchStack" component={SearchStack} /> */}
           <Tab.Screen name="ProfileStack" component={ProfileStack} />
         </Tab.Navigator>

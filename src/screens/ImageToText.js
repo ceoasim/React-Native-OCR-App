@@ -10,10 +10,6 @@ import { useDispatch } from 'react-redux';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import RNFetchBlob from 'rn-fetch-blob';
 
-
-import * as selectors from '../redux/home/selectors';
-
-import images from './../constants/images';
 import colors from './../constants/colors';
 
 
@@ -21,6 +17,7 @@ import TesseractOcr, {
   LANG_ENGLISH,
   useEventListener,
 } from 'react-native-tesseract-ocr';
+import { useNavigation } from '@react-navigation/native';
 
 const DEFAULT_HEIGHT = 500;
 const DEFAULT_WITH = 600;
@@ -36,6 +33,8 @@ function ImageToText() {
   const [imgSrc, setImgSrc] = useState(null);
   const [text, setText] = useState('');
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+  
 
   useEventListener('onProgressChange', (p) => {
     setProgress(p.percent / 100);
@@ -103,6 +102,7 @@ function ImageToText() {
 
         const NEW_FILE_PATH = dirs.DownloadDir + `/${fileName + Date.now()}.pdf`;
         fs.createFile(NEW_FILE_PATH, base64.encode(file), 'base64');
+
         alert("File is saved successfully")
 
       } else {
@@ -156,7 +156,7 @@ function ImageToText() {
 
     let file = await RNHTMLtoPDF.convert(options)
     // console.log(file.filePath);
-    alert(file.filePath);
+    // alert(file.filePath);
     historyDownload(file.filePath, file, text.substring(0, 4))
   }
 
@@ -236,6 +236,7 @@ function ImageToText() {
                     title="Save"
                     onPress={() => {
                       dispatch(Actions.addText(text))
+                      navigation.navigate("Home")
                     }}
                   />
                   <View style={{ marginLeft: 20 }}>
